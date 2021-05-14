@@ -34,5 +34,12 @@ router.patch('/states/:name', function (req, res, next) {
     }).catch(err => next(err)) // unknown error with the database
 });
 
+router.get('/states/visited', function (req, res, next) {
+    // let stateName = req.params.name
+    States.findAll({where: {visited: true}}).then(states => { // get all states that have visited value equal to true
+        return res.json(states) // return the states
+    }).catch(err => next(err))
+});
+
 
 module.exports = router

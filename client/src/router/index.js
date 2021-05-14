@@ -2,6 +2,7 @@ import {createRouter, createWebHashHistory} from 'vue-router';
 import StateList from "@/components/StateList";
 import AboutSite from "@/components/AboutSite";
 import StateMap from '@/components/StateMap'
+import VisitedStates from "@/components/VisitedStates";
 
 export default createRouter({
     history: createWebHashHistory(),
@@ -20,6 +21,11 @@ export default createRouter({
             path: '/map/:state',
             name: 'StateMap',
             component: StateMap
+        },
+        {
+            path: '/visited',
+            name: 'VisitedStates',
+            component: VisitedStates
         }
     ]
 });
