@@ -1,0 +1,20 @@
+<template>
+  <div>
+    <h2>Where have you traveled to?</h2>
+
+    <p>Keep track of states traveled to</p>
+    <p>A vue.js site by Mohammad</p>
+  </div>
+</template>
+
+<script>
+
+export default {
+  name: 'AboutSite'
+}
+
+</script>
+
+<style scoped>
+
+</style>
