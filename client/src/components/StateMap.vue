@@ -1,8 +1,12 @@
 <template>
 <div class="state-map">
-  <h2>The state of {{ state.name }}</h2>
+  <h2 v-if="boolVar">The state of {{ state.name }}</h2>
+  <div v-else>
+    <img class="404" src="@/assets/404image.png">
+  </div>
+
   <p v-if="state.visited">You have visited this state</p>
-  <p v-else>You have not visited this state yet</p>
+  <p v-else v-if="boolVar">You have not visited this state yet</p>
 
 <!--  leaflet map-->
   <div id="map-container" v-if="dataReady">
@@ -29,7 +33,8 @@ export default {
       state: {},
       // this will solve the timing error, all data has to be loaded and ready before we use the map in the app
       dataReady: false,
-      mapReady: false
+      mapReady: false,
+      boolVar: true
     }
   },
   mounted() {
@@ -45,6 +50,7 @@ export default {
         // 404 not found
         if (err.response && err.response.status === 404) {
           this.state.name = '?'
+          this.boolVar = false
         } else { // 500 server errors
           alert('Error fetching data about state'); // for users
           console.error(err) // for developer
